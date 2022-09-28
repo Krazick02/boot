@@ -42,7 +42,7 @@
                                 <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1">
                             </div>
                         </div>
-                        <button type="submit" class="btn btn-primary">Iniciar Secion</button>
+                        <button type="submit" class="btn btn-primary">Iniciar Seción</button>
                     </form>
                 </div>
             </div>
