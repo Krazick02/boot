@@ -21,6 +21,7 @@
             height: 94vh;
         }
     </style>
+    <link rel="stylesheet" href="sweetalert2.min.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-iYQeCzEYFbKjA/T2uDLTpkwGzCiq6soy8tYaI1GyVh/UjpbCx/TYkiZhlZB6+fzT" crossorigin="anonymous">
 </head>
 
@@ -91,6 +92,9 @@
                     <li class="nav-item">
                         <a class="nav-link disabled">Disabled</a>
                     </li>
+                    <button class="btn btn-info" onclick="traeAvatarGithub()">
+                        Ver tu avatar de Github
+                    </button>
                 </ul>
             </div>
             <div class="col">
@@ -112,12 +116,12 @@
                         <?php for ($i = 0; $i < 12; $i++) : ?>
                             <div class="col-md-3 col-sm-2">
                                 <div class="card" style="width: 18rem;">
-                                    <img src="/public/img/poke.png" class="card-img-top" alt="...">
+                                    <img src="/img/poke.png" class="card-img-top" alt="poke.png">
                                     <div class="card-body">
                                         <h5 class="card-title">Card title</h5>
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                         <button type="button" class="btn btn-success">Detalles</button>
-                                        <button type="button" class="btn btn-danger" >Eliminar</button>
+                                        <button type="button" class="btn btn-danger" onclick="alerta(1)">Eliminar</button>
                                         <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addProduct">Editar</button>
                                     </div>
                                 </div>
@@ -181,9 +185,11 @@
         </div>
     </div>
     <!-- JavaScript Bundle with Popper -->
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script type="text/javascript">
-        function alerta(target){
-            Swal({
+
+        function alerta(n){
+            Swal.fire({
                 title: 'Are you sure?',
                 text: "You won't be able to revert this!",
                 icon: 'warning',
@@ -199,8 +205,43 @@
                     'success'
                     )
                 }
-                })
+            })
         }
+        
+            function traeAvatarGithub(){
+                Swal.fire({
+                title: 'Submit your Github username',
+                input: 'text',
+                inputAttributes: {
+                    autocapitalize: 'off'
+                },
+                showCancelButton: true,
+                confirmButtonText: 'Look up',
+                showLoaderOnConfirm: true,
+                preConfirm: (login) => {
+                    return fetch(`//api.github.com/users/${login}`)
+                    .then(response => {
+                        if (!response.ok) {
+                        throw new Error(response.statusText)
+                        }
+                        return response.json()
+                    })
+                    .catch(error => {
+                        Swal.showValidationMessage(
+                        `Request failed: ${error}`
+                        )
+                    })
+                },
+                allowOutsideClick: () => !Swal.isLoading()
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    Swal.fire({
+                    title: `${result.value.login}'s avatar`,
+                    imageUrl: result.value.avatar_url
+                    })
+                }
+                })
+            };
     </script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-u1OknCvxWvY5kfmNBILK2hRnQC3Pr17a+RTT6rIHI7NnikvbZlHgTPOOmMi466C8" crossorigin="anonymous"></script>
 </body>
