@@ -1,10 +1,8 @@
 <?php
 session_start();
 
-if (isset($_POST['action'])) 
-{
-    switch ($_POST['action']) 
-    {
+if (isset($_POST['action'])) {
+    switch ($_POST['action']) {
         case 'create':
             $name = strip_tags($_POST['name']);
             $slug = strip_tags($_POST['slug']);
@@ -13,16 +11,12 @@ if (isset($_POST['action']))
             $brand_id = strip_tags($_POST['brand_id']);
             $productController = new ProductosController();
             $productController -> createProduct($name, $slug, $description, $features, $brand_id);
-          
         break;
-
     }
 }
 
-Class ProductosController
-{
-    public function productos()
-    {
+Class ProductosController{
+    public function productos(){
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
@@ -47,18 +41,15 @@ Class ProductosController
 
         $response = json_decode($response);
 
-        if( isset($response->code) &&  $response->code > 0) 
-        {
+        if( isset($response->code) &&  $response->code > 0) {
             return $response -> data;
         } 
-        else 
-        {
+        else {
             return array();
         }
     }
 
-    public function createProduct($name, $slug, $description, $features, $brand_id) 
-    {
+    public function createProduct($name, $slug, $description, $features, $brand_id) {
         
         $curl = curl_init();
 
@@ -90,13 +81,10 @@ Class ProductosController
 
         $response = json_decode($response);
 
-        if( isset($response->code) &&  $response->code > 0) 
-        {
+        if( isset($response->code) &&  $response->code > 0) {
             header ("Location:../products?success=true");
-        } else
-         {
+        } else{
             header ("Location:../products?error=true");
         }
     }
-
 }

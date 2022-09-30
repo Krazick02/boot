@@ -45,7 +45,7 @@
                 $_SESSION['avatar'] = $response->data->avatar;
                 $_SESSION['token'] = $response->data->token;
              
-                header ("Location:../public/index.php");
+                header ("Location:../public/view/productos.php");
             } 
             else 
             {

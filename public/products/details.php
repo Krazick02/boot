@@ -4,35 +4,7 @@
 
     <div class="container-fluid">
         <div class="row">
-            <div class="col-sm-2 d-sm-block d-none text-bg-dark sitebar">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Link</a>
-                    </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                            Dropdown
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Action</a></li>
-                            <li><a class="dropdown-item" href="#">Ansssother action</a></li>
-                            <li>
-                                <hr class="dropdown-divider">
-                            </li>
-                            <li><a class="dropdown-item" href="#">Something else here</a></li>
-                        </ul>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link disabled">Disabled</a>
-                    </li>
-                    <!-- <button class="btn btn-info" onclick="traeAvatarGithub()">
-                        Ver tu avatar de Github
-                    </button> -->
-                </ul>
-            </div>
+            <?php include '../public/templates/bar.template.php'?>
             <div class="col">
 
                 <section>
@@ -42,78 +14,13 @@
                                 Productos
                             </label>
                         </div>
-                        <!-- <div class="col">
-                            <button class="btn float-end btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">Añadir</button>
-                        </div> -->
                     </div>
                 </section>
                 <section>
-                    <div class="row">
-                            <div class="col-md-3 col-sm-2">
-                                <div class="card" style="width: 18rem;">
-                                    <img src="/img/poke.png" class="card-img-top" alt="poke.png">
-                                    <div class="card-body">
-                                        <h5 class="card-title">Card title</h5>
-                                        <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                                        <button type="button" class="btn btn-success">Detalles</button>
-                                        <button type="button" class="btn btn-danger" onclick="alerta(1)">Eliminar</button>
-                                        <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#addProduct">Editar</button>
-                                    </div>
-                                </div>
-                            </div>
-                    </div>
+                    <!-- producto -->
                 </section>
                 <!-- Modal -->
-                <div class="modal fade" id="addProduct" tabindex="-1" aria-labelledby="addProduct" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <form action="">
-
-                                <div class="modal-body">
-                                    <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping">@</span>
-                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-                                    </div>
-                                    <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping">@</span>
-                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-                                    </div>
-                                    <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping">@</span>
-                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-                                    </div>
-                                    <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping">@</span>
-                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-                                    </div>
-                                    <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping">@</span>
-                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-                                    </div>
-                                    <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping">@</span>
-                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-                                    </div>
-                                    <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping">@</span>
-                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-                                    </div>
-                                    <div class="input-group flex-nowrap">
-                                        <span class="input-group-text" id="addon-wrapping">@</span>
-                                        <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="addon-wrapping">
-                                    </div>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
-                        </div>
-                        </form>
-                    </div>
+                
                 </div>
             </div>
         </div>

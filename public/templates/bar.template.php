@@ -23,8 +23,9 @@
             <li class="nav-item">
                 <a class="nav-link disabled">Disabled</a>
             </li>
-            <button class="btn btn-info" onclick="traeAvatarGithub()">
+            
+            <!--<button class="btn btn-info" onclick="traeAvatarGithub()">
                 Ver tu avatar de Github
-            </button>
+            </button> -->
         </ul>
     </div>
