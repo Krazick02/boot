@@ -1,14 +1,11 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <?php include '/xampp/htdocs/IDSTV/boot/public/templates/head.template.php'?>
-</head>
+<?php include 'public/templates/head.template.php'?>
+
 <body>
     <div class="container">
         <section class="cont">
-                <div class="row cont justify-content-md-center aling align-items-center">
+            <div class="row cont justify-content-md-center aling align-items-center">
                 <div class="col-md-6 col-sm-12">
-                    <form method="post" action="/idstv/boot/app/AuthController.php">
+                    <form method="post" action="app/AuthController.php">
                         <h1 class="text-center">
                             Acceso
                         </h1>
