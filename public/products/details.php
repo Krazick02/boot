@@ -1,8 +1,3 @@
-<?php 
-    include '../IDSTV/boot/app/productController.php';
-    $producto = new ProductosController;
-    $productos = $producto->productos();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -39,9 +34,9 @@
                     <li class="nav-item">
                         <a class="nav-link disabled">Disabled</a>
                     </li>
-                    <button class="btn btn-info" onclick="traeAvatarGithub()">
+                    <!-- <button class="btn btn-info" onclick="traeAvatarGithub()">
                         Ver tu avatar de Github
-                    </button>
+                    </button> -->
                 </ul>
             </div>
             <div class="col">
@@ -60,12 +55,11 @@
                 </section>
                 <section>
                     <div class="row">
-                        <?php foreach($productos->$data as $prod) : ?>
                             <div class="col-md-3 col-sm-2">
                                 <div class="card" style="width: 18rem;">
-                                    <img src="<?php $prod->cover ?>" class="card-img-top" alt="poke.png">
+                                    <img src="/img/poke.png" class="card-img-top" alt="poke.png">
                                     <div class="card-body">
-                                        <h5 class="card-title"><?php $prod->name ?></h5>
+                                        <h5 class="card-title">Card title</h5>
                                         <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
                                         <button type="button" class="btn btn-success">Detalles</button>
                                         <button type="button" class="btn btn-danger" onclick="alerta(1)">Eliminar</button>
@@ -73,7 +67,6 @@
                                     </div>
                                 </div>
                             </div>
-                        <?php endforeach ?>
                     </div>
                 </section>
                 <!-- Modal -->
