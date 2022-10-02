@@ -11,14 +11,12 @@ function alerta(n) {
         if (result.isConfirmed) {
             Swal.fire(
                 'Deleted!',
-                'Your file has been deleted.' + n,
+                'Your file has been deleted.',
                 'success'
             )
         }
     })
 }
-
-
 
 function traeAvatarGithub() {
     Swal.fire({

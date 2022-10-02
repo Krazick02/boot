@@ -31,6 +31,7 @@ include '../../public/templates/head.template.php'
                         </label>
                     </div>
                 </div>
+                
             </section>
             <section>
                 <div class="row">
