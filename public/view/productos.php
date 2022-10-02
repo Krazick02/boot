@@ -19,16 +19,16 @@
                                 Productos
                             </label>
                         </div>
-                        <!-- <div class="col">
+                        <div class="col">
                             <button class="btn float-end btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">Añadir</button>
-                        </div> -->
+                        </div>
                     </div>
                 </section>
                 <section>
-                <div class="row">
-                <?php foreach($productos as $lista):?> 
-                    <?php include '../../public/products/products.php'?>
-                    <?php endforeach; ?>
+                    <div class="row">
+                        <?php foreach($productos as $lista):
+                            include '../../public/templates/products.template.php';
+                        endforeach; ?>
                     </div>
                 </section>
                 <!-- Modal -->
