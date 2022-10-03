@@ -6,7 +6,7 @@
             <p class="card-text"><?php echo $lista->description ?></p>
             
             <div class="row">
-                <button type="button" class="btn btn-info"><a class="dropdown-item" href="#">Editar</a></button>
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateProduct" onclick="llenarDatos('<?php echo $srt ?>');">Editar</button>
                 <button type="button" class="btn btn-success"><a class="dropdown-item" href="details.php?slug=<?php echo $lista->slug ?>">Detalles</a></button>
                 <button type="button" class="btn btn-danger" onclick="alerta('<?php echo $lista->id ?>')">Eliminar</button>
             </div>

@@ -56,8 +56,10 @@ function traeAvatarGithub() {
 function llenarDatos(datos) {
     data = datos.split('||');
 
-    $('#nameU').val(data[0]);
-    $('#descriptionU').val(data[1]);
-    $('#featuresU').val(data[2]);
-    $('#brand_idU').val(data[3]);
-}
+    console.log(data);
+    document.getElementById('nameU').value = data[0];
+    document.getElementById('descriptionU').value = data[1];
+    document.getElementById('featuresU').value = data[2];
+    document.getElementById('brand_idU').value = data[3];
+    document.getElementById('objetivoId').value = data[4];
+};

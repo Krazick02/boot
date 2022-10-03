@@ -17,7 +17,17 @@ if (isset($_POST['action'])) {
             $idEl = $_GET['idEliminar'];
             $productController = new ProductosController();
             $productController -> delete($idEl);
-        break;
+            break;
+        case 'update':
+            $name = strip_tags($_POST['name']);
+            $slug = strip_tags(strtr($_POST['name']," ","-"));
+            $description = strip_tags($_POST['description']);
+            $features = strip_tags($_POST['features']);
+            $brand_id = strip_tags($_POST['brand_id']);
+            $id = strip_tags($_POST['objetivo']);
+            $productController = new ProductosController();
+            $productController -> updateProduct($name, $slug, $description, $features, $brand_id, $id);
+            break;
     }
 }
 
@@ -150,11 +160,52 @@ Class ProductosController{
         $response = json_decode($response);
     
         if( isset($response->code) &&  $response->code > 0) {
-            header ("Location:../view/productos.php");
+            $var = $response->message;
+            header ("Location:../view/productos.php?var=".$var);
             // header ("Location:../view/productos.php?delete=true");
         } else{
             // header ("Location:../view/productos.php?delete=false");
             header ("Location:../view/productos.php");
+        }
+    }
+
+    public function updateProduct($name, $slug, $description, $features, $brand_id, $id) {
+        
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://crud.jonathansoto.mx/api/products',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'PUT',
+            CURLOPT_POSTFIELDS => array(
+            'name' => $name,
+            'slug' => $slug,
+            'description' => $description,
+            'features' => $features,
+            'brand_id' => '1',
+            'id' => $id),
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Bearer '.$_SESSION['token'],
+                'Content-Type: application/x-www-form-urlencoded'
+            ),
+          ));
+
+        $response = curl_exec($curl);
+
+        curl_close($curl);
+        
+        $response = json_decode($response);
+
+        if( isset($response->code) &&  $response->code > 0) {
+            header ("Location:../public/view/productos.php?success=true");
+        } else{
+            $var = $response->message;
+            header ("Location:../public/view/productos.php?error=true&razon=".$_SESSION['token']);
         }
     }
 }
