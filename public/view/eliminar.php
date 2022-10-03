@@ -6,3 +6,5 @@ $objt = strip_tags($_GET['idEliminar']);
 
 $productoEspecifico = $producto->delete($objt);
 ?>
+
+<a href=""></a>

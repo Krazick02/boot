@@ -1,9 +1,11 @@
 <?php 
     include '../../app/productController.php';
     $producto = new ProductosController;
-    $productos = $producto->productos();
-    if(isset($_GET['delete'])){
-        $objt = strip_tags($_GET['delete']);
+    if(isset($_GET['categoria'])){
+        $objt = strip_tags(strtr($_GET['categoria']," ","-"));
+        $productos = $producto->cat($objt);
+    }else{
+
     }
     include '../../public/templates/head.template.php'
 ?>

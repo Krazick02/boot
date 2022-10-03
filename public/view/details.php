@@ -22,85 +22,83 @@ include '../../public/templates/head.template.php'
     <div class="container-fluid">
         <?php include '../../public/templates/bar.template.php' ?>
         <div class="col">
-
             <section>
-                <div class="row">
-                    <div class="col">
-                        <label for="">
-                            Productos
-                        </label>
-                    </div>
-                </div>
-                
-            </section>
-            <section>
-                <div class="row">
-                    <div class="row align-items-center">
-                        <img src="<?php echo $productoEspecifico->cover ?>" alt="..."  style="height: 300px; width: 400px;">
+                <div class="col">
+                    <div class="row">
+                        <div class="col align-self-center text-center">
+                            <h3>
+                                Producto:
+                            </h3>
+                        </div>
                     </div>
                     <div class="row">
-                        <div class="row">
-                            <?php echo $productoEspecifico->name ?>
+                        <div class="col col-sm-5 mb-1 align-items-center">
+                            <img src="<?php echo $productoEspecifico->cover ?>" alt="..." style="width:80% ;">
                         </div>
-                        <div class="row">
-                            <?php echo $productoEspecifico->description ?>
-                        </div>
-                        <div class="row">
-                            <?php echo $productoEspecifico->features ?>
-                        </div>
-                        <?php if (isset($brand)) :
-                            echo '
+                        <div class="col">
+                            <div class="row" style="padding:20px 30px 20px 30px;">
+                                <?php echo $productoEspecifico->name ?>
+                            </div>
+                            <div class="row" style="padding:20px 30px 20px 30px;">
+                                <?php echo $productoEspecifico->description ?>
+                            </div>
+                            <div class="row" style="padding:20px 30px 20px 30px;">
+                                <?php echo $productoEspecifico->features ?>
+                            </div>
+                            <?php if (isset($brand)) :
+                                echo '
                                     <div class="row">
                                     <div class="row">
-                                        Brand:
+                                        Marca:
                                     </div>
                                     <div class="row">
                                             <div class="row">
                                                 <div class="col">
+                                                    <a href="">
                                                     ' . $brand->name . '
-                                                </div>
-                                                <div class="col">
-                                                    ' . $brand->description . '
-                                                </div>
-                                                <div class="col">
-                                                    ' . $brand->slug . '
+                                                    </a>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     ';
-                        endif;
+                            endif;
 
-                        if (isset($tags)):
-                            echo '<div class="row">
+                            if (sizeof($tags)>0) :
+                                echo '<div class="row">
                                         <div class="row">
-                                            Tags:
+                                            Etiquetas:
                                         </div>';
-                            foreach ($tags as $tag) :
-                                echo '
+                                foreach ($tags as $tag) :
+                                    echo '
                                         <div class="col">
-                                            ' . $tag->name . '
+                                        <a href="">
+                                                ' . $tag->name . '
+                                                </a>
                                         </div>';
-                            endforeach;
+                                endforeach;
 
-                            echo '</div>';
-                        endif;
+                                echo '</div>';
+                            endif;
 
-                        if (isset($categories)):
-                            echo '<div class="row">
+                            if (sizeof($categories)>0) :
+                                echo '<div class="row">
                                         <div class="row">
-                                            Categories:
+                                            Categorias:
                                         </div>';
-                            foreach ($categories as $category) :
-                                echo '
+                                foreach ($categories as $category) :
+                                    echo '
                                         <div class="col">
+                                        <a href="pCategoria.php?categoria='.$category->name.'">
                                             ' . $category->name . '
+                                                </a>
                                         </div>';
-                            endforeach;
+                                endforeach;
 
-                            echo '</div>';
-                        endif;
-                        ?>
+                                echo '</div>';
+                            endif;
+                            ?>
+                        </div>
                     </div>
                 </div>
             </section>

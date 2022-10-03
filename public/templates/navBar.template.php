@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-lg" style="background-color: #e3f2fd;">
         <div class="container-fluid">
-            <a class="navbar-brand" href="#">
-                <img src="" alt="" style="width: 50px;">
+            <a class="navbar-brand" href="productos.php">
+                <img src="../img/ikea.jpg" alt="" style="width: 50px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -9,7 +9,7 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                     <li class="nav-item">
-                        <a class="nav-link active" aria-current="page" href="#">Home</a>
+                        <a class="nav-link active" aria-current="page" href="productos.php"><i class="bi bi-house-door-fill"></i>Home</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">Link</a>
