@@ -118,9 +118,9 @@ Class ProductosController{
         $response = json_decode($response);
 
         if( isset($response->code) &&  $response->code > 0) {
-            header ("Location:../public/view/productos?success=true");
+            header ("Location:../public/view/productos.php?success=true");
         } else{
-            header ("Location:../public/view/productos?error=true");
+            header ("Location:../public/view/productos.php?error=true");
         }
     }
 
@@ -150,9 +150,11 @@ Class ProductosController{
         $response = json_decode($response);
     
         if( isset($response->code) &&  $response->code > 0) {
-            header ("Location:../public/view/productos?success=true");
+            header ("Location:../view/productos.php");
+            // header ("Location:../view/productos.php?delete=true");
         } else{
-            header ("Location:../public/view/productos?error=true");
+            // header ("Location:../view/productos.php?delete=false");
+            header ("Location:../view/productos.php");
         }
     }
 }

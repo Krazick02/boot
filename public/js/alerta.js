@@ -6,7 +6,7 @@ function alerta(n) {
         showCancelButton: true,
         confirmButtonColor: '#3085d6',
         cancelButtonColor: '#d33',
-        confirmButtonText: 'Yes, delete it!'
+        confirmButtonText: '<a class="dropdown-item" href="eliminar.php?idEliminar=' + n + '">Yes, delete it!</a>'
     }).then((result) => {
         if (result.isConfirmed) {
             Swal.fire(
