@@ -33,7 +33,7 @@ include '../../public/templates/head.template.php'
                     </div>
                     <div class="row">
                         <div class="col col-sm-5 mb-1 align-items-center">
-                            <img src="<?php echo $productoEspecifico->cover ?>" alt="..." style="width:80% ;">
+                            <img src="<?php echo $productoEspecifico->cover ?>" alt="..." style="width:80%;">
                         </div>
                         <div class="col">
                             <div class="row" style="padding:20px 30px 20px 30px;">

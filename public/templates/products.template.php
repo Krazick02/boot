@@ -1,13 +1,19 @@
 <div class="col-md-4 col-lg-3 col-sm-6 p-2">
-    <div class="card presentacion mb-2">
-        <a href="details.php?slug=<?php echo $lista->slug ?>">
+    <div class="card text-center presentacion mb-2">
+        <a href="details.php?slug=<?php echo $lista->slug ?>" style="width:100%;">
             <img src="<?php echo $lista->cover ?>" class="card-img-top" alt="...">
         </a>
         <div class="card-body">
-            <h5 class="card-title text-center"><?php echo $lista->name ?></h5>
+            <p class="card-title text-center" style="
+            width: 100%;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            font-size: 25px;
+            "><b><?php echo $lista->name?></b> </p>
             <?php 
                 if(isset($lista->brand->name )){
-                    echo '<p class="card-text">'.$lista->brand->name.'</p>';
+                    echo '<p class="card-text ">'.$lista->brand->name.'</p>';
                 }
             ?>
 
@@ -27,9 +33,9 @@
             <p class="card-text"></p>
             
             <div class="row">
-                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#updateProduct" onclick="llenarDatos('<?php echo $srt ?>');">Editar</button>
-                <button type="button" class="btn btn-success"><a class="dropdown-item" href="details.php?slug=<?php echo $lista->slug ?>">Detalles</a></button>
-                <button type="button" class="btn btn-danger" onclick="alerta('<?php echo $lista->id ?>')">Eliminar</button>
+                <button type="button" style="margin:10px 10px 10px 10px;" class="btn col btn-warning" data-bs-toggle="modal" data-bs-target="#updateProduct" onclick="llenarDatos('<?php echo $srt ?>');">Editar</button>
+                <button type="button" style="margin:10px 10px 10px 10px;" class="btn col btn-success"><a class="dropdown-item" href="details.php?slug=<?php echo $lista->slug ?>">Detalles</a></button>
+                <button type="button" style="margin:10px 10px 10px 10px;" class="btn col btn-danger" onclick="alerta('<?php echo $lista->id ?>')">Eliminar</button>
             </div>
         </div>
     </div>
