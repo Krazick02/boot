@@ -66,7 +66,12 @@
                     </div>
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping">Marca</span>
-                        <input type="text" id="brand_idU" name="brand_id" class="form-control" placeholder="">
+                        <select class="form-select" aria-label="Default select example">
+                            <option selected>Selecciona la marca</option>
+                            <?php foreach($marcas as $marca): ?>
+                                <option value="<?php echo $marca->id; ?>"><?php echo $marca->name; ?></option>
+                            <?php endforeach; ?>
+                          </select>
                     </div>
                 </div>
                 <div class="modal-footer">

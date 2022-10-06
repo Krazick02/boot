@@ -1,11 +1,11 @@
-<?php include 'public/templates/head.template.php'?>
+<?php include '../templates/head.template.php'?>
 
 <body>
     <div class="container">
         <section class="cont">
             <div class="row cont justify-content-md-center aling align-items-center">
                 <div class="col-md-6 col-sm-12 justify-content-md-center aling align-items-center">
-                    <form method="post" action="app/AuthController.php">
+                    <form method="post" action="../../app/AuthController.php" enctype="multipart/form-data">
                         <h1 class="text-center">
                             Registrar nuevo socio:
                         </h1>
@@ -58,19 +58,13 @@
                                 <input type="file" name="imagen" class="form-control" >
                             </div>
                         </div>
-                        
-                        <div class="form-check form-switch">
-                            <!-- aun no funciona jsjs -->
-                            <input class="form-check-input" type="checkbox" id="flexSwitchCheckDisabled">
-                            <label class="form-check-label" for="flexSwitchCheckDisabled">Recordar Usuario</label>
-                        </div>
                         <div class="d-grid gap-2 col-3 mx-auto">
                             <button type="submit" class="btn btn-primary">Continuar</button>
-                            <input type="hidden" name="action" value="access">
+                            <input type="hidden" name="action" value="create">
                         </div>
                     </form>
                 </div>
-                <?php include 'public/templates/footer.template.php'?>
+                <?php include '../templates/footer.template.php'?>
             </div>
         </section>
     </div>

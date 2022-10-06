@@ -32,6 +32,8 @@
                             <button type="submit" class="btn btn-primary">Continuar</button>
                             <input type="hidden" name="action" value="access">
                         </div>
+                        <a href="/boot/public/view/registerUser.php">Registrar</a>
+                        <a href="">Recuperar Contraseña</a>
                     </form>
                 </div>
                 <?php include 'public/templates/footer.template.php'?>

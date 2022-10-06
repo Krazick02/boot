@@ -9,11 +9,9 @@
                     Marcas
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Marca #</a></li>
-                    <li><a class="dropdown-item" href="#">Marca #</a></li>
-                    <li><a class="dropdown-item" href="#">Marca #</a></li>
-                    <li><a class="dropdown-item" href="#">Marca #</a></li>
-                    <li><a class="dropdown-item" href="#">Marca #</a></li>
+                    <?php foreach($marcas as $marca): ?>
+                    <li><a class="dropdown-item" href="#"><?php echo $marca->name; ?></a></li>
+                    <?php endforeach; ?>
                     <li>
                         <hr class="dropdown-divider">
                     </li>

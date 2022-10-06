@@ -16,11 +16,9 @@
                             Marcas
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Marca #</a></li>
-                            <li><a class="dropdown-item" href="#">Marca #</a></li>
-                            <li><a class="dropdown-item" href="#">Marca #</a></li>
-                            <li><a class="dropdown-item" href="#">Marca #</a></li>
-                            <li><a class="dropdown-item" href="#">Marca #</a></li>
+                            <?php foreach($marcas as $marca): ?>
+                            <li><a class="dropdown-item" href="#"><?php echo $marca->name; ?></a></li>
+                            <?php endforeach; ?>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
@@ -32,12 +30,9 @@
                             Categorias
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#">Categoria #</a></li>
-                            <li><a class="dropdown-item" href="#">Categoria #</a></li>
-                            <li><a class="dropdown-item" href="#">Categoria #</a></li>
-                            <li><a class="dropdown-item" href="#">Categoria #</a></li>
-                            <li><a class="dropdown-item" href="#">Categoria #</a></li>
-                            <li>
+                            <?php foreach($categories as $categ): ?>
+                            <li><a class="dropdown-item" href="#"><?php echo $categ->name; ?></a></li>
+                            <?php endforeach; ?><li>
                                 <hr class="dropdown-divider">
                             </li>
                             <li><a class="dropdown-item" href="#">Something else here</a></li>

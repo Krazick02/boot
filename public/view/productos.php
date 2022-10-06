@@ -1,10 +1,13 @@
 <?php 
     include '../../app/productController.php';
     include '../../app/BrandController.php';
+    include '../../app/CategoryController.php';
     $producto = new ProductosController;
     $productos = $producto->productos();
     $brandss = new BrandController;
     $marcas = $brandss->getBrands();
+    $categoriess = new CategoryController;
+    $categories = $categoriess->getCategories();
     if(isset($_GET['delete'])){
         $objt = strip_tags($_GET['delete']);
     }
