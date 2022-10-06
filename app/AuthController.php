@@ -21,7 +21,7 @@ if (isset($_POST["action"]) && isset($_POST["email"])) {
             break;
         case 'recovery':
             $authcontroller = new AuthController();
-            $authcontroller->recovery($_POST["email"]); 
+            $authcontroller->recovery($_POST["email"]);
             break;
     }
 }
@@ -56,6 +56,7 @@ class AuthController
             $_SESSION['lastname'] = $response->data->lastname;
             $_SESSION['avatar'] = $response->data->avatar;
             $_SESSION['token'] = $response->data->token;
+            $_SESSION['email'] = $response->data->email;
 
             header("Location:../public/view/productos.php");
         } else {
@@ -77,21 +78,22 @@ class AuthController
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => array(
-                'name' => $name, 
-                'lastname' => $lastname, 
-                'email' => $email, 
-                'phone_number' => $phone_number, 
-                'created_by' => $create_by, 
-                'role' => $role, 
-                'password' => $password, 
-                'profile_photo_file' => $profile_photo),
+                'name' => $name,
+                'lastname' => $lastname,
+                'email' => $email,
+                'phone_number' => $phone_number,
+                'created_by' => $create_by,
+                'role' => $role,
+                'password' => $password,
+                'profile_photo_file' => $profile_photo
+            ),
         ));
 
         $response = curl_exec($curl);
         curl_close($curl);
         $response = json_decode($response);
         if (isset($response->code) &&  $response->code > 0) {
-            $this->login($email,$password);
+            $this->login($email, $password);
         } else {
             header("Location:../?error=true");
         }
@@ -101,21 +103,54 @@ class AuthController
         $curl = curl_init();
 
         curl_setopt_array($curl, array(
-          CURLOPT_URL => 'https://crud.jonathansoto.mx/api/forgot-password',
-          CURLOPT_RETURNTRANSFER => true,
-          CURLOPT_ENCODING => '',
-          CURLOPT_MAXREDIRS => 10,
-          CURLOPT_TIMEOUT => 0,
-          CURLOPT_FOLLOWLOCATION => true,
-          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-          CURLOPT_CUSTOMREQUEST => 'POST',
-          CURLOPT_POSTFIELDS => array('email' => $email),
+            CURLOPT_URL => 'https://crud.jonathansoto.mx/api/forgot-password',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array('email' => $email),
         ));
 
         $response = curl_exec($curl);
         curl_close($curl);
         $response = json_decode($response);
         if (isset($response->code) &&  $response->code > 0) {
+            header("Location:../../index.php");
+        } else {
+            header("Location:../?error=true");
+        }
+    }
+
+    public function logout()
+    {
+
+
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+            CURLOPT_URL => 'https://crud.jonathansoto.mx/api/logout',
+            CURLOPT_RETURNTRANSFER => true,
+            CURLOPT_ENCODING => '',
+            CURLOPT_MAXREDIRS => 10,
+            CURLOPT_TIMEOUT => 0,
+            CURLOPT_FOLLOWLOCATION => true,
+            CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+            CURLOPT_CUSTOMREQUEST => 'POST',
+            CURLOPT_POSTFIELDS => array('email' => $_SESSION['email']),
+            CURLOPT_HTTPHEADER => array(
+                'Authorization: Bearer '.$_SESSION['token'],
+            ),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $response = json_decode($response);
+        if (isset($response->code) &&  $response->code > 0) {
+            $_SESSION= array();
+            session_destroy();
             header("Location:../../index.php");
         } else {
             header("Location:../?error=true");

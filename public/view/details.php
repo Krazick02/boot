@@ -1,5 +1,12 @@
 <?php
 include '../../app/productController.php';
+
+session_start();
+if(!isset($_SESSION['name'])){
+    header("Location:../../index.php");
+}
+
+
 $producto = new ProductosController;
 
 $slug = strip_tags($_GET['slug']);

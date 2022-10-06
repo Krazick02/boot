@@ -39,7 +39,7 @@
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link">Cerrar Sesion</a>
+                        <a class="nav-link" href="eliminar.php?action=logout">Cerrar Sesion</a>
                     </li>
                 </ul>
             </div>

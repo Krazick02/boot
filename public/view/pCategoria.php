@@ -1,5 +1,11 @@
 <?php 
     include '../../app/productController.php';
+
+    session_start();
+if(!isset($_SESSION['name'])){
+    header("Location:../../index.php");
+}
+
     $producto = new ProductosController;
     if(isset($_GET['categoria'])){
         $objt = strip_tags(strtr($_GET['categoria']," ","-"));

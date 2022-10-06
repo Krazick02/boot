@@ -2,6 +2,13 @@
     include '../../app/productController.php';
     include '../../app/BrandController.php';
     include '../../app/CategoryController.php';
+
+
+    session_start();
+    if(!isset($_SESSION['name'])){
+        header("Location:../../index.php");
+    }
+
     $producto = new ProductosController;
     $productos = $producto->productos();
     $brandss = new BrandController;
