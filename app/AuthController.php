@@ -1,6 +1,6 @@
 <?php
 
-
+session_start();
 if (isset($_POST["action"]) && isset($_POST["email"])) {
     switch ($_POST["action"]) {
         case 'access':
@@ -31,10 +31,10 @@ if (isset($_POST["action"]) && isset($_POST["email"])) {
 class AuthController
 {
     public function isLogin(){
-        if($_SESSION['token']){
-            return true;
+        if(isset($_SESSION['token'])){
+            return false;
         }
-        return false;
+        return true;
     }
     public function login($email, $password)
     {
@@ -159,7 +159,7 @@ class AuthController
             session_destroy();
             header("Location:../../index.php");
         } else {
-            header("Location:../?error=true");
+            var_dump($_SESSION['token']);
         }
     }
 }

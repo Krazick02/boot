@@ -1,5 +1,4 @@
 <?php
-    session_start();
     Class BrandController{
         public function getBrands(){
             $curl = curl_init();

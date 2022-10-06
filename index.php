@@ -13,13 +13,13 @@
                         <div class="row mb-3">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">@</span>
-                                <input type="text" name="email" class="form-control" placeholder="Usuario">
+                                <input type="text" name="email" class="form-control" placeholder="Usuario" required>
                             </div>
                         </div>
                         <div class="row mb-3">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">@</span>
-                                <input type="password" name="pwd" class="form-control" placeholder="******">
+                                <input type="password" name="pwd" class="form-control" placeholder="******" required>
                             </div>
                         </div>
                         

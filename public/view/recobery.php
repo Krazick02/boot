@@ -1,4 +1,11 @@
-<?php include '../templates/head.template.php'?>
+<?php 
+include '../../app/AuthController.php';
+$user = new AuthController; 
+    
+if(!$user->isLogin()){
+    header("Location:../../index.php");
+}
+include '../templates/head.template.php'?>
 
 <body>
     <div class="container">
@@ -12,7 +19,7 @@
                         <div class="row mb-3">
                             <div class="input-group mb-3">
                                 <span class="input-group-text" id="basic-addon1">@</span>
-                                <input type="email" name="email" class="form-control" placeholder="Correo">
+                                <input type="email" name="email" class="form-control" placeholder="Correo" required>
                             </div>
                         </div>
                         <div class="row mb-3">

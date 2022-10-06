@@ -8,23 +8,23 @@
             <form action="../../app/productController.php" method="POST" enctype="multipart/form-data">
                 <div class="modal-body">
                     <div class="input-group flex-nowrap">
-                        <input type="file" name="imagen" class="form-control" placeholder="Seleccione la imagen">
+                        <input type="file" name="imagen" class="form-control" placeholder="Seleccione la imagen" required>
                     </div>
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping">Nombre</span>
-                        <input type="text" name="name" class="form-control" placeholder="Nombre del articulo">
+                        <input type="text" name="name" class="form-control" placeholder="Nombre del articulo" required>
                     </div>
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping">Descripcion</span>
-                        <input type="text" name="description" class="form-control" placeholder="Descripcion del articulo">
+                        <input type="text" name="description" class="form-control" placeholder="Descripcion del articulo" required>
                     </div>
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping">Caracteristicas</span>
-                        <input type="text" name="features" class="form-control" placeholder="Caracteristicas del articulo">
+                        <input type="text" name="features" class="form-control" placeholder="Caracteristicas del articulo" required>
                     </div>
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping">Marca</span>
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" aria-label="Default select example" name="marca" required>
                             <option selected>Selecciona la marca</option>
                             <?php foreach($marcas as $marca): ?>
                                 <option value="<?php echo $marca->id; ?>"><?php echo $marca->name; ?></option>
@@ -66,7 +66,7 @@
                     </div>
                     <div class="input-group flex-nowrap">
                         <span class="input-group-text" id="addon-wrapping">Marca</span>
-                        <select class="form-select" aria-label="Default select example">
+                        <select class="form-select" aria-label="Default select example" name="marca">
                             <option selected>Selecciona la marca</option>
                             <?php foreach($marcas as $marca): ?>
                                 <option value="<?php echo $marca->id; ?>"><?php echo $marca->name; ?></option>
@@ -76,9 +76,9 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                    <button type="submit" class="btn btn-primary">Editar</button>
                     <input type="hidden" name="action" value="update">
-                    <input type="hidden" name="objetivo" id="objetivoId">
+                    <input type="text" name="objetivo" id="numeral" value="0">
+                    <button type="submit" class="btn btn-primary">Editar</button>
                 </div>
             </form>
         </div>

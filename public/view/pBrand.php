@@ -1,17 +1,19 @@
-<?php 
+<?php
+    include '../../app/AuthController.php';
     include '../../app/BrandController.php';
     include '../../app/CategoryController.php';
 
-    if (!isset($_SESSION['name'])) {
-        header("Location:../../index.php");
-    }
     $brandss = new BrandController;
     $marcas = $brandss->getBrands();
     $categoriess = new CategoryController;
     $categories = $categoriess->getCategories();
 
     $productos = $brandss->getProducts($_GET['brand']);
-
+    $user = new AuthController; 
+    
+    if($user->isLogin()){
+        header("Location:../../index.php");
+    }
     include '../../public/templates/head.template.php'
 ?>
 <body>

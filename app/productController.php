@@ -2,11 +2,12 @@
 if (isset($_POST['action'])) {
     switch ($_POST['action']) {
         case 'create':
+            session_start();
             $name = strip_tags($_POST['name']);
             $slug = strip_tags(strtr($_POST['name']," ","-"));
             $description = strip_tags($_POST['description']);
             $features = strip_tags($_POST['features']);
-            $brand_id = strip_tags($_POST['brand_id']);
+            $brand_id = strip_tags($_POST['marca']);
             $cover = new CURLFILE($_FILES['imagen']['tmp_name']);
             $productController = new ProductosController();
             $productController -> createProduct($name, $slug, $description, $features, $brand_id,$cover);
@@ -17,14 +18,17 @@ if (isset($_POST['action'])) {
             $productController -> delete($idEl);
             break;
         case 'update':
+            session_start();
             $name = strip_tags($_POST['name']);
             $slug = strip_tags(strtr($_POST['name']," ","-"));
             $description = strip_tags($_POST['description']);
             $features = strip_tags($_POST['features']);
-            $brand_id = strip_tags($_POST['brand_id']);
+            $brand_id = strip_tags($_POST['marca']);
             $id = strip_tags($_POST['objetivo']);
+
+            // var_dump($brand_id.' -<<>>- '.$id);
             $productController = new ProductosController();
-            $productController -> updateProduct($name, $slug, $description, $features, $brand_id, $id);
+            $productController -> updateProduct($name,$slug,$description,$features,$brand_id,$id);
             break;
     }
 }
@@ -110,7 +114,7 @@ Class ProductosController{
         'slug' => $slug,
         'description' => $description,
         'features' => $features,
-        'brand_id' => '1',
+        'brand_id' => $brand_id,
         'cover'=> $cover),
         CURLOPT_HTTPHEADER => array(
             'Authorization: Bearer ' .$_SESSION['token'],
@@ -180,13 +184,7 @@ Class ProductosController{
             CURLOPT_FOLLOWLOCATION => true,
             CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
             CURLOPT_CUSTOMREQUEST => 'PUT',
-            CURLOPT_POSTFIELDS => array(
-            'name' => $name,
-            'slug' => $slug,
-            'description' => $description,
-            'features' => $features,
-            'brand_id' => '1',
-            'id' => $id),
+            CURLOPT_POSTFIELDS => 'name='.$name.'&slug='.$slug.'&description='.$description.'&features='.$features.'&brand_id='.$brand_id.'&id='.$id,
             CURLOPT_HTTPHEADER => array(
                 'Authorization: Bearer '.$_SESSION['token'],
                 'Content-Type: application/x-www-form-urlencoded'
@@ -202,8 +200,10 @@ Class ProductosController{
         if( isset($response->code) &&  $response->code > 0) {
             header ("Location:../public/view/productos.php?success=true");
         } else{
-            $var = $response->message;
-            header ("Location:../public/view/productos.php?error=true&razon=".$var);
+            
+            var_dump($response);
+            
+            // header ("Location:../public/view/productos.php?error=true&razon=".$var);
         }
     }
     public function cat($categoria){

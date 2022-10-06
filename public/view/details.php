@@ -1,4 +1,5 @@
 <?php
+    include '../../app/AuthController.php';
     include '../../app/BrandController.php';
     include '../../app/productController.php';
     include '../../app/CategoryController.php';
@@ -6,7 +7,9 @@
     $marcas = $brandss->getBrands();
     $categoriess = new CategoryController;
     $categories = $categoriess->getCategories();
-    if (!isset($_SESSION['name'])) {
+    $user = new AuthController; 
+    
+    if($user->isLogin()){
         header("Location:../../index.php");
     }
 
