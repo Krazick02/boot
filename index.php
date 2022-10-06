@@ -32,9 +32,11 @@
                             <button type="submit" class="btn btn-primary">Continuar</button>
                             <input type="hidden" name="action" value="access">
                         </div>
-                        <a href="/boot/public/view/registerUser.php">Registrar</a>
-                        <a href="/boot/public/view/recobery.php">Recuperar Contraseña</a>
                     </form>
+                    <div class="row " style="width: 100%;">
+                        <div class="text-center col-sm-6"><a class="enlace" href="public/view/registerUser.php">Registrar</a></div>
+                        <div class="text-center col-sm-6"><a class="enlace" href="public/view/recobery.php">Recuperar Contraseña</a></div>
+                    </div>
                 </div>
                 <?php include 'public/templates/footer.template.php'?>
             </div>

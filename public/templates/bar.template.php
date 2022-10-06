@@ -10,7 +10,7 @@
                 </a>
                 <ul class="dropdown-menu">
                     <?php foreach($marcas as $marca): ?>
-                    <li><a class="dropdown-item" href="#"><?php echo $marca->name; ?></a></li>
+                    <li><a class="dropdown-item" href="pBrand.php?brand=<?php echo $marca->id ?>"><?php echo $marca->name; ?></a></li>
                     <?php endforeach; ?>
                     <li>
                         <hr class="dropdown-divider">
@@ -23,12 +23,9 @@
                     Categorias
                 </a>
                 <ul class="dropdown-menu">
-                    <li><a class="dropdown-item" href="#">Categoria #</a></li>
-                    <li><a class="dropdown-item" href="#">Categoria #</a></li>
-                    <li><a class="dropdown-item" href="#">Categoria #</a></li>
-                    <li><a class="dropdown-item" href="#">Categoria #</a></li>
-                    <li><a class="dropdown-item" href="#">Categoria #</a></li>
-                    <li>
+                    <?php foreach($categories as $categ): ?>
+                    <li><a class="dropdown-item" href="pCategoria.php?categoria=<?php echo $categ->id ?>"><?php echo $categ->name; ?></a></li>
+                    <?php endforeach; ?><li>
                         <hr class="dropdown-divider">
                     </li>
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
@@ -36,6 +33,9 @@
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="eliminar.php?action=logout">Cerrar Sesion</a>
+            </li>
+            <li class="nav-item">
+                <?php echo $_SESSION['name']?>
             </li>
         </ul>
     </div>

@@ -30,6 +30,12 @@ if (isset($_POST["action"]) && isset($_POST["email"])) {
 
 class AuthController
 {
+    public function isLogin(){
+        if($_SESSION['token']){
+            return true;
+        }
+        return false;
+    }
     public function login($email, $password)
     {
         $curl = curl_init();
@@ -118,7 +124,7 @@ class AuthController
         curl_close($curl);
         $response = json_decode($response);
         if (isset($response->code) &&  $response->code > 0) {
-            header("Location:../../index.php");
+            header("Location:../index.php");
         } else {
             header("Location:../?error=true");
         }

@@ -1,19 +1,17 @@
 <?php 
     include '../../app/BrandController.php';
-    include '../../app/productController.php';
     include '../../app/CategoryController.php';
 
-    if(!isset($_SESSION['name'])){
+    if (!isset($_SESSION['name'])) {
         header("Location:../../index.php");
     }
-
-    $producto = new ProductosController;
-    $productos = $producto->productos();
     $brandss = new BrandController;
     $marcas = $brandss->getBrands();
     $categoriess = new CategoryController;
     $categories = $categoriess->getCategories();
-    
+
+    $productos = $brandss->getProducts($_GET['brand']);
+
     include '../../public/templates/head.template.php'
 ?>
 <body>
@@ -26,21 +24,24 @@
                 <section>
                     <div class="row">
                         <div class="col">
-                            <label for="">
-                                Productos
-                            </label>
-                        </div>
-                        <div class="col">
-                            <button class="btn float-end btn-primary" data-bs-toggle="modal" data-bs-target="#addProduct">Añadir</button>
+                            Categoria:
                         </div>
                     </div>
                 </section>
                 <section>
                     <div class="row">
-                        <?php foreach($productos as $lista):
+                        <?php if(isset($productos)){foreach($productos as $lista):
                             $srt = $lista->name.'||'.$lista->description.'||'.$lista->features.'||'.$lista->brand_id.'||'.$lista->id;
-                            include '../../public/templates/products.template.php';
-                        endforeach; ?>
+                            include '../../public/templates/productsWI.template.php';
+                        endforeach; }else{
+                        ?>
+                        
+                        <div class="col bg-pink text-center">
+                            Lo sentimos, no tenemos productos disponibles sobre esta marca :c
+                        </div>
+                        
+                        <?php
+                        }?>
                     </div>
                 </section>
                 <!-- Modal -->

@@ -15,3 +15,26 @@
 .presentacion {
     width: 80%;
 }
+
+.enlace {
+    outline: none;
+    text-decoration: none;
+    padding: 2px 1px 0;
+}
+
+.enlace:link {
+    color: blue;
+}
+
+.enlace:visited {
+    color: purple;
+}
+
+.enlace:focus,
+a:hover {
+    border-bottom: 1px solid;
+}
+
+.enlace:active {
+    color: red;
+}

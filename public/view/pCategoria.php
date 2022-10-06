@@ -1,18 +1,17 @@
 <?php 
-    include '../../app/productController.php';
+    include '../../app/BrandController.php';
+    include '../../app/CategoryController.php';
 
-    session_start();
-if(!isset($_SESSION['name'])){
-    header("Location:../../index.php");
-}
-
-    $producto = new ProductosController;
-    if(isset($_GET['categoria'])){
-        $objt = strip_tags(strtr($_GET['categoria']," ","-"));
-        $productos = $producto->cat($objt);
-    }else{
-
+    if (!isset($_SESSION['name'])) {
+        header("Location:../../index.php");
     }
+    $brandss = new BrandController;
+    $marcas = $brandss->getBrands();
+    $categoriess = new CategoryController;
+    $categories = $categoriess->getCategories();
+
+    $productos = $categoriess->getProducts($_GET['categoria']);
+
     include '../../public/templates/head.template.php'
 ?>
 <body>
@@ -30,11 +29,19 @@ if(!isset($_SESSION['name'])){
                     </div>
                 </section>
                 <section>
-                    <div class="row">
-                        <?php foreach($productos as $lista):
+                <div class="row">
+                        <?php if(isset($productos)){foreach($productos as $lista):
                             $srt = $lista->name.'||'.$lista->description.'||'.$lista->features.'||'.$lista->brand_id.'||'.$lista->id;
-                            include '../../public/templates/products.template.php';
-                        endforeach; ?>
+                            include '../../public/templates/productsWI.template.php';
+                        endforeach; }else{
+                        ?>
+                        
+                        <div class="col bg-pink text-center">
+                            Lo sentimos, no tenemos productos disponibles sobre esta categoria :c
+                        </div>
+                        
+                        <?php
+                        }?>
                     </div>
                 </section>
                 <!-- Modal -->

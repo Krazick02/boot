@@ -17,7 +17,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <?php foreach($marcas as $marca): ?>
-                            <li><a class="dropdown-item" href="#"><?php echo $marca->name; ?></a></li>
+                            <li><a class="dropdown-item" href="pBrand.php?brand=<?php echo $marca->id ?>"><?php echo $marca->name; ?></a></li>
                             <?php endforeach; ?>
                             <li>
                                 <hr class="dropdown-divider">
@@ -31,7 +31,7 @@
                         </a>
                         <ul class="dropdown-menu">
                             <?php foreach($categories as $categ): ?>
-                            <li><a class="dropdown-item" href="#"><?php echo $categ->name; ?></a></li>
+                            <li><a class="dropdown-item" href="pCategoria.php?categoria=<?php echo $categ->id ?>"><?php echo $categ->name; ?></a></li>
                             <?php endforeach; ?><li>
                                 <hr class="dropdown-divider">
                             </li>

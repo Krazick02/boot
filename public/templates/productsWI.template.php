@@ -1,7 +1,7 @@
 <div class="col-md-4 col-lg-3 col-sm-6 p-2">
     <div class="card text-center presentacion mb-2">
         <a href="details.php?slug=<?php echo $lista->slug ?>" style="width:100%;">
-            <img src="<?php echo $lista->cover ?>" class="card-img-top" alt="...">
+            <img src="https://crud.jonathansoto.mx/storage/products/<?php echo $lista->cover ?>" class="card-img-top" alt="...">
         </a>
         <div class="card-body">
             <p class="card-title text-center" style="
