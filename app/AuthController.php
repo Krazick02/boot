@@ -19,6 +19,10 @@ if (isset($_POST["action"]) && isset($_POST["email"])) {
             $authcontroller = new AuthController();
             $authcontroller->register($name, $lastname, $email, $phone_number, $create_by, $role, $password, $profile_photo);
             break;
+        case 'recovery':
+            $authcontroller = new AuthController();
+            $authcontroller->recovery($_POST["email"]); 
+            break;
     }
 }
 
@@ -88,6 +92,31 @@ class AuthController
         $response = json_decode($response);
         if (isset($response->code) &&  $response->code > 0) {
             $this->login($email,$password);
+        } else {
+            header("Location:../?error=true");
+        }
+    }
+    public function recovery($email)
+    {
+        $curl = curl_init();
+
+        curl_setopt_array($curl, array(
+          CURLOPT_URL => 'https://crud.jonathansoto.mx/api/forgot-password',
+          CURLOPT_RETURNTRANSFER => true,
+          CURLOPT_ENCODING => '',
+          CURLOPT_MAXREDIRS => 10,
+          CURLOPT_TIMEOUT => 0,
+          CURLOPT_FOLLOWLOCATION => true,
+          CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+          CURLOPT_CUSTOMREQUEST => 'POST',
+          CURLOPT_POSTFIELDS => array('email' => $email),
+        ));
+
+        $response = curl_exec($curl);
+        curl_close($curl);
+        $response = json_decode($response);
+        if (isset($response->code) &&  $response->code > 0) {
+            header("Location:../../index.php");
         } else {
             header("Location:../?error=true");
         }
