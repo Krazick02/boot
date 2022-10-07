@@ -61,7 +61,6 @@ class AuthController
         curl_close($curl);
         $response = json_decode($response);
         if (isset($response->code) &&  $response->code > 0) {
-            session_start();
             $_SESSION['id'] = $response->data->id;
             $_SESSION['name'] = $response->data->name;
             $_SESSION['lastname'] = $response->data->lastname;
@@ -69,9 +68,9 @@ class AuthController
             $_SESSION['token'] = $response->data->token;
             $_SESSION['email'] = $response->data->email;
 
-            header("Location:../public/view/productos.php");
+            header("Location:".BASE_PATH."/public/view/productos.php");
         } else {
-            header("Location:../?error=true");
+            header("Location:".BASE_PATH."/?error=true");
         }
     }
 

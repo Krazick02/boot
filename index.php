@@ -8,7 +8,7 @@ include 'public/templates/head.template.php'?>
         <section class="cont">
             <div class="row cont justify-content-md-center aling align-items-center">
                 <div class="col-md-6 col-sm-12 justify-content-md-center aling align-items-center">
-                    <form method="post" action="app/AuthController.php">
+                    <form method="post" action="<?php echo BASE_PATH?>auth">
                         <h1 class="text-center">
                             Iniciar sesion
                         </h1>
