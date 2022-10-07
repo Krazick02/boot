@@ -1,4 +1,5 @@
 <?php
+include_once 'config.php';
 if (isset($_POST['action'])) {
     switch ($_POST['action']) {
         case 'create':
@@ -18,15 +19,12 @@ if (isset($_POST['action'])) {
             $productController -> delete($idEl);
             break;
         case 'update':
-            session_start();
             $name = strip_tags($_POST['name']);
             $slug = strip_tags(strtr($_POST['name']," ","-"));
             $description = strip_tags($_POST['description']);
             $features = strip_tags($_POST['features']);
             $brand_id = strip_tags($_POST['marca']);
             $id = strip_tags($_POST['objetivo']);
-
-            // var_dump($brand_id.' -<<>>- '.$id);
             $productController = new ProductosController();
             $productController -> updateProduct($name,$slug,$description,$features,$brand_id,$id);
             break;

@@ -1,4 +1,7 @@
-<?php include 'public/templates/head.template.php'?>
+<?php 
+include 'app/config.php';
+
+include 'public/templates/head.template.php'?>
 
 <body>
     <div class="container">
@@ -31,6 +34,7 @@
                         <div class="d-grid gap-2 col-3 mx-auto">
                             <button type="submit" class="btn btn-primary">Continuar</button>
                             <input type="hidden" name="action" value="access">
+                            <input type="hidden" name="super_token" value="<?php echo $_SESSION['super_token'];?>">
                         </div>
                     </form>
                     <div class="row " style="width: 100%;">

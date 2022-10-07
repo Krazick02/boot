@@ -1,4 +1,5 @@
 <?php
+include_once 'config.php';
     Class CategoryController{
         public function getCategories(){
             $curl = curl_init();
