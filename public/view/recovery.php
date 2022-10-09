@@ -13,7 +13,7 @@ include '../templates/head.template.php'?>
         <section class="cont">
             <div class="row cont justify-content-md-center aling align-items-center">
                 <div class="col-md-6 col-sm-12 justify-content-md-center aling align-items-center">
-                    <form method="post" action="<?= BASE_PATH?>recovery" enctype="multipart/form-data">
+                    <form method="post" action="<?= BASE_PATH?>ress" enctype="multipart/form-data">
                         <h1 class="text-center">
                             Ingresa tu correo electronico:
                         </h1>
