@@ -3,6 +3,7 @@
 include_once 'config.php';
 
 if (isset($_POST["action"]) && isset($_POST["email"])) {
+    // var_dump($_POST['super_token']+$_SESSION['super_token']);
     if (isset($_POST['super_token']) && $_POST['super_token'] == $_SESSION['super_token']) {
 
         switch ($_POST["action"]) {
@@ -68,9 +69,9 @@ class AuthController
             $_SESSION['token'] = $response->data->token;
             $_SESSION['email'] = $response->data->email;
 
-            header("Location:".BASE_PATH."/public/view/productos.php");
+            header("Location:".BASE_PATH."public/view/productos.php");
         } else {
-            header("Location:".BASE_PATH."/?error=true");
+            header("Location:".BASE_PATH."?error=true");
         }
     }
 
@@ -105,7 +106,7 @@ class AuthController
         if (isset($response->code) &&  $response->code > 0) {
             $this->login($email, $password);
         } else {
-            header("Location:../?error=true");
+            header("Location:".BASE_PATH."?error=true");
         }
     }
     public function recovery($email)
@@ -128,9 +129,9 @@ class AuthController
         curl_close($curl);
         $response = json_decode($response);
         if (isset($response->code) &&  $response->code > 0) {
-            header("Location:../index.php");
+            header("Location:".BASE_PATH."index");
         } else {
-            header("Location:../?error=true");
+            header("Location:".BASE_PATH."?error=true");
         }
     }
 
@@ -161,7 +162,7 @@ class AuthController
         if (isset($response->code) &&  $response->code > 0) {
             $_SESSION = array();
             session_destroy();
-            header("Location:../../index.php");
+            header("Location:".BASE_PATH."index");
         } else {
             var_dump($_SESSION['token']);
         }

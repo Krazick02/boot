@@ -1,34 +1,37 @@
 <?php
 include_once 'config.php';
 if (isset($_POST['action'])) {
-    switch ($_POST['action']) {
-        case 'create':
-            session_start();
-            $name = strip_tags($_POST['name']);
-            $slug = strip_tags(strtr($_POST['name']," ","-"));
-            $description = strip_tags($_POST['description']);
-            $features = strip_tags($_POST['features']);
-            $brand_id = strip_tags($_POST['marca']);
-            $cover = new CURLFILE($_FILES['imagen']['tmp_name']);
-            $productController = new ProductosController();
-            $productController -> createProduct($name, $slug, $description, $features, $brand_id,$cover);
-            break;
-        case 'delete':
-            $idEl = $_GET['idEliminar'];
-            $productController = new ProductosController();
-            $productController -> delete($idEl);
-            break;
-        case 'update':
-            $name = strip_tags($_POST['name']);
-            $slug = strip_tags(strtr($_POST['name']," ","-"));
-            $description = strip_tags($_POST['description']);
-            $features = strip_tags($_POST['features']);
-            $brand_id = strip_tags($_POST['marca']);
-            $id = strip_tags($_POST['objetivo']);
-            $productController = new ProductosController();
-            $productController -> updateProduct($name,$slug,$description,$features,$brand_id,$id);
-            break;
-    }
+    // var_dump($_POST['super_token']+$_SESSION['super_token']);
+    //if (isset($_POST['super_token']) && $_POST['super_token'] == $_SESSION['super_token']) {
+        switch ($_POST['action']) {
+            case 'create':
+                session_start();
+                $name = strip_tags($_POST['name']);
+                $slug = strip_tags(strtr($_POST['name']," ","-"));
+                $description = strip_tags($_POST['description']);
+                $features = strip_tags($_POST['features']);
+                $brand_id = strip_tags($_POST['marca']);
+                $cover = new CURLFILE($_FILES['imagen']['tmp_name']);
+                $productController = new ProductosController();
+                $productController -> createProduct($name, $slug, $description, $features, $brand_id,$cover);
+                break;
+            case 'delete':
+                $idEl = $_POST['idEliminar'];
+                $productController = new ProductosController();
+                $productController -> delete($idEl);
+                break;
+            case 'update':
+                $name = strip_tags($_POST['name']);
+                $slug = strip_tags(strtr($_POST['name']," ","-"));
+                $description = strip_tags($_POST['description']);
+                $features = strip_tags($_POST['features']);
+                $brand_id = strip_tags($_POST['marca']);
+                $id = strip_tags($_POST['objetivo']);
+                $productController = new ProductosController();
+                $productController -> updateProduct($name,$slug,$description,$features,$brand_id,$id);
+                break;
+        }
+    //}
 }
 
 Class ProductosController{
@@ -128,15 +131,15 @@ Class ProductosController{
         $response = json_decode($response);
 
         if( isset($response->code) &&  $response->code > 0) {
-            header ("Location:../public/view/productos.php?success=true");
+            header ("Location:".BASE_PATH."public/view/productos?success=true");
         } else{
-            header ("Location:../public/view/productos.php?error=true");
+            header ("Location:".BASE_PATH."public/view/productos?error=true");
         }
     }
 
 
     public function delete($id) {
-        
+        var_dump($id);
         $curl = curl_init();
         
         curl_setopt_array($curl, array(
@@ -161,11 +164,12 @@ Class ProductosController{
     
         if( isset($response->code) &&  $response->code > 0) {
             $var = $response->message;
-            header ("Location:../view/productos.php");
+            header ("Location:../view/productos");
             // header ("Location:../view/productos.php?delete=true");
         } else{
             // header ("Location:../view/productos.php?delete=false");
-            header ("Location:../view/productos.php");
+            return $response;
+            //header ("Location:../view/productos");
         }
     }
 
@@ -196,7 +200,7 @@ Class ProductosController{
         $response = json_decode($response);
         
         if( isset($response->code) &&  $response->code > 0) {
-            header ("Location:../public/view/productos.php?success=true");
+            header ("Location:../public/view/productos?success=true");
         } else{
             
             var_dump($response);

@@ -1,6 +1,6 @@
 <div class="col-md-4 col-lg-3 col-sm-6 p-2">
     <div class="card text-center presentacion mb-2">
-        <a href="details.php?slug=<?php echo $lista->slug ?>" style="width:100%;">
+        <a href="details?slug=<?php echo $lista->slug ?>" style="width:100%;">
             <img src="https://crud.jonathansoto.mx/storage/products/<?php echo $lista->cover ?>" class="card-img-top" alt="...">
         </a>
         <div class="card-body">
@@ -34,7 +34,7 @@
             
             <div class="row">
                 <button type="button" style="margin:10px 10px 10px 10px;" class="btn col btn-warning" data-bs-toggle="modal" data-bs-target="#updateProduct" onclick="llenarDatos('<?php echo $srt ?>');">Editar</button>
-                <button type="button" style="margin:10px 10px 10px 10px;" class="btn col btn-success"><a class="dropdown-item" href="details.php?slug=<?php echo $lista->slug ?>">Detalles</a></button>
+                <button type="button" style="margin:10px 10px 10px 10px;" class="btn col btn-success"><a class="dropdown-item" href="details?slug=<?php echo $lista->slug ?>">Detalles</a></button>
                 <button type="button" style="margin:10px 10px 10px 10px;" class="btn col btn-danger" onclick="alerta('<?php echo $lista->id ?>')">Eliminar</button>
             </div>
         </div>

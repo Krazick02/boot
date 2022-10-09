@@ -3,7 +3,7 @@ include '../../app/AuthController.php';
 $user = new AuthController; 
     
 if(!$user->isLogin()){
-    header("Location:../../index.php");
+    header("Location:".BASE_PATH."public/view/productos");
 }
 include '../templates/head.template.php'
 ?>
@@ -69,6 +69,7 @@ include '../templates/head.template.php'
                         <div class="d-grid gap-2 col-3 mx-auto">
                             <button type="submit" class="btn btn-primary">Continuar</button>
                             <input type="hidden" name="action" value="create">
+                            <input type="hidden" name="super_token" value="<?php echo $_SESSION['super_token'];?>">
                         </div>
                     </form>
                 </div>

@@ -10,7 +10,7 @@
     $user = new AuthController; 
     
     if($user->isLogin()){
-        header("Location:../../index.php");
+        header("Location:../../index");
     }
 
 
@@ -68,7 +68,7 @@
                                     <div class="row">
                                             <div class="row">
                                                 <div class="col">
-                                                    <a href="pBrand.php?brand=' . $brand->id . '">
+                                                    <a href="pBrand?brand=' . $brand->id . '">
                                                     ' . $brand->name . '
                                                     </a>
                                                 </div>
@@ -86,7 +86,7 @@
                                 foreach ($tags as $tag) :
                                     echo '
                                         <div class="col">
-                                        <a href="pTag.php?tag=' . $tag->id . '">
+                                        <a href="pTag?tag=' . $tag->id . '">
                                                 ' . $tag->name . '
                                                 </a>
                                         </div>';
@@ -103,7 +103,7 @@
                                 foreach ($categories as $category) :
                                     echo '
                                         <div class="col">
-                                        <a href="pCategoria.php?categoria=' . $category->id . '">
+                                        <a href="pCategoria?categoria=' . $category->id . '">
                                             ' . $category->name . '
                                                 </a>
                                         </div>';

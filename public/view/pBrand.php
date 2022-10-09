@@ -12,7 +12,7 @@
     $user = new AuthController; 
     
     if($user->isLogin()){
-        header("Location:../../index.php");
+        header("Location:../../index");
     }
     include '../../public/templates/head.template.php'
 ?>

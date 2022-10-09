@@ -1,14 +1,20 @@
 <?php 
 include 'app/config.php';
+include 'app/AuthController.php';
+$user = new AuthController; 
+    
+if(!$user->isLogin()){
+    header("Location:".BASE_PATH."public/view/productos");
+}
 
 include 'public/templates/head.template.php'?>
-
+<?php ?>
 <body>
     <div class="container">
         <section class="cont">
             <div class="row cont justify-content-md-center aling align-items-center">
                 <div class="col-md-6 col-sm-12 justify-content-md-center aling align-items-center">
-                    <form method="post" action="<?php echo BASE_PATH?>auth">
+                    <form method="post" action="<?= BASE_PATH?>auth">
                         <h1 class="text-center">
                             Iniciar sesion
                         </h1>
@@ -38,8 +44,8 @@ include 'public/templates/head.template.php'?>
                         </div>
                     </form>
                     <div class="row " style="width: 100%;">
-                        <div class="text-center col-sm-6"><a class="enlace" href="public/view/registerUser.php">Registrar</a></div>
-                        <div class="text-center col-sm-6"><a class="enlace" href="public/view/recobery.php">Recuperar Contraseña</a></div>
+                        <div class="text-center col-sm-6"><a class="enlace" href="public/view/registerUser">Registrar</a></div>
+                        <div class="text-center col-sm-6"><a class="enlace" href="public/view/recovery">Recuperar Contraseña</a></div>
                     </div>
                 </div>
                 <?php include 'public/templates/footer.template.php'?>
