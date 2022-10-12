@@ -29,24 +29,26 @@
                 <section>
                     <div class="row">
                         <div class="col">
-                            Categoria:
+                        <h3>
+                                Por marca:
+                            </h3>
                         </div>
                     </div>
                 </section>
                 <section>
                     <div class="row">
-                        <?php if(isset($productos)){foreach($productos as $lista):
-                            $srt = $lista->name.'||'.$lista->description.'||'.$lista->features.'||'.$lista->brand_id.'||'.$lista->id;
-                            include '../../public/templates/productsWI.template.php';
-                        endforeach; }else{
-                        ?>
-                        
-                        <div class="col bg-pink text-center">
-                            Lo sentimos, no tenemos productos disponibles sobre esta marca :c
-                        </div>
-                        
-                        <?php
-                        }?>
+                    <?php if (isset($productos) && sizeof($productos) > 0) {
+                        foreach ($productos as $lista) :
+                            $srt = $lista->name . '||' . $lista->description . '||' . $lista->features . '||' . $lista->brand_id . '||' . $lista->id;
+                            include '../../public/templates/products.template.php';
+                        endforeach;
+                    } else {
+                        echo '
+                                    <div class="col bg-pink text-center">
+                                    Lo sentimos, no tenemos productos disponibles sobre esta marca :c
+                                </div>';
+                    }
+                    ?>
                     </div>
                 </section>
                 <!-- Modal -->
