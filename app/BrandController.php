@@ -29,7 +29,6 @@ if (isset($_POST["action"])) {
     }
 }
 
-include_once 'config.php';
 class BrandController
 {
     public function getBrands()

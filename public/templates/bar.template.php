@@ -31,6 +31,19 @@
                     <li><a class="dropdown-item" href="#">Something else here</a></li>
                 </ul>
             </li>
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    Etiquetas
+                </a>
+                <ul class="dropdown-menu">
+                    <?php foreach($tags as $t): ?>
+                    <li><a class="dropdown-item" href="pTags?tagId=<?php echo $t->id ?>"><?php echo $t->name; ?></a></li>
+                    <?php endforeach; ?><li>
+                        <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="#">Something else here</a></li>
+                </ul>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="eliminar?action=logout">Cerrar Sesion</a>
             </li>

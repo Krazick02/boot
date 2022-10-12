@@ -3,6 +3,7 @@ include '../../app/AuthController.php';
 include '../../app/BrandController.php';
 include '../../app/productController.php';
 include '../../app/CategoryController.php';
+include '../../app/TagController.php';
 
 
 $producto = new ProductosController;
@@ -12,6 +13,11 @@ $marcas = $brandss->getBrands();
 $categoriess = new CategoryController;
 $categories = $categoriess->getCategories();
 $user = new AuthController;
+
+
+$tagss = new TagController();
+$tags = $tagss->getTags();
+
 
 if ($user->isLogin()) {
     header("Location:../../index");
@@ -29,7 +35,7 @@ include '../../public/templates/head.template.php'
                 <div class="row">
                     <div class="col">
                         <label for="">
-                            Productos
+                            Productos <?= $_SESSION['token']?>
                         </label>
                     </div>
                     <div class="col">

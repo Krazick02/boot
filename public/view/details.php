@@ -3,6 +3,9 @@
     include '../../app/BrandController.php';
     include '../../app/productController.php';
     include '../../app/CategoryController.php';
+    include '../../app/TagController.php';
+    $tagss = new TagController();
+    $tags = $tagss->getTags();
     $brandss = new BrandController;
     $marcas = $brandss->getBrands();
     $categoriess = new CategoryController;
@@ -86,7 +89,7 @@
                                 foreach ($tags as $tag) :
                                     echo '
                                         <div class="col">
-                                        <a href="pTag?tag=' . $tag->id . '">
+                                        <a href="pTags?tagId=' . $tag->id . '">
                                                 ' . $tag->name . '
                                                 </a>
                                         </div>';

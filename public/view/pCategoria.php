@@ -2,6 +2,9 @@
     include '../../app/AuthController.php';
     include '../../app/BrandController.php';
     include '../../app/CategoryController.php';
+    include '../../app/TagController.php';
+    $tagss = new TagController();
+    $tags = $tagss->getTags();
 
     $brandss = new BrandController;
     $marcas = $brandss->getBrands();
