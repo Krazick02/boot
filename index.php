@@ -33,7 +33,6 @@ include 'public/templates/head.template.php'?>
                         </div>
                         
                         <div class="form-check form-switch">
-                            <!-- aun no funciona jsjs -->
                             <input class="form-check-input" type="checkbox" id="flexSwitchCheckDisabled">
                             <label class="form-check-label" for="flexSwitchCheckDisabled">Recordar Usuario</label>
                         </div>
