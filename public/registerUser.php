@@ -135,10 +135,10 @@ if(!$user->isLogin()){
                                                     <p id="pass-number" class="invalid fs-12 mb-0">A least <b>number</b> (0-9)</p>
                                                 </div>
 
-                                                <div href="public/dashboard.php" class="mt-4">
+                                                <div  class="mt-4">
                                                     <button class="btn btn-success w-100" type="submit" id="send">Sign Up</button>
                                                 </div>
-                                                <input type="hidden" name="action" value="register">
+                                                <input type="hidden" name="action" value="create">
                                                 <input type="hidden" name="super_token" value="<?= $_SESSION['super_token'] ?>">
                                             </form>
 

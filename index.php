@@ -33,6 +33,7 @@ if (!$user->isLogin()) {
     <link href="assets/css/app.min.css" rel="stylesheet" type="text/css" />
     <!-- custom Css-->
     <link href="assets/css/custom.min.css" rel="stylesheet" type="text/css" />
+    <link href="assets/css/details.css" rel="stylesheet" type="text/css" />
 
 
 </head>
@@ -96,34 +97,34 @@ if (!$user->isLogin()) {
                                         </div>
 
                                         <div class="mt-4">
-                                            <form method="post" action="<?= BASE_PATH ?>auth">
+                                            <form method="post" action="<?= BASE_PATH ?>auth" id="form">
 
                                                 <div class="mb-3">
-                                                    <label for="username" class="form-label">Email</label>
-                                                    <input type="text" name="email" class="form-control" id="email" placeholder="Enter username">
-                                                </div>
+                                                    <label for="username" class="form-label">Username</label>
+                                                    <input name="email" type="text" class="form-control" id="username" placeholder="Enter email" required>
+                                                    <p class="formulario__input-error text-danger" id="grupo_email">The format is not supported.</p>
 
+                                                </div>
                                                 <div class="mb-3">
                                                     <div class="float-end">
-                                                        <a href="public/recovery.php" class="text-muted">Forgot password?</a>
+                                                        <a href="<?= BASE_PATH ?>auth" class="text-muted">Forgot password?</a>
                                                     </div>
                                                     <label class="form-label" for="password-input">Password</label>
                                                     <div class="position-relative auth-pass-inputgroup mb-3">
-                                                        <input type="password" name="pwd" class="form-control pe-5 password-input" placeholder="Enter password" id="password-input">
+                                                        <input name="password" type="password" class="form-control pe-5 password-input" placeholder="Enter password" id="password-input" required>
                                                         <button class="btn btn-link position-absolute end-0 top-0 text-decoration-none text-muted password-addon" type="button" id="password-addon"><i class="ri-eye-fill align-middle"></i></button>
                                                     </div>
+                                                    <p class="formulario__input-error text-danger" id="grupo_password">The password must have a minimum of 8 characters and a maximum of 14</p>
                                                 </div>
-
                                                 <div class="form-check">
                                                     <input class="form-check-input" type="checkbox" value="" id="auth-remember-check">
                                                     <label class="form-check-label" for="auth-remember-check">Remember me</label>
                                                 </div>
-
                                                 <div class="mt-4">
-                                                    <input type="hidden" name="action" value="access">
-                                                    <input type="hidden" name="super_token" value="<?php echo $_SESSION['super_token']; ?>">
-                                                    <button class="btn btn-success w-100" type="submit">Sign In</button>
+                                                    <button class="btn btn-success w-100" id="send" type="submit">Sign In</button>
                                                 </div>
+                                                <input type="hidden" name="action" value="access">
+                                                <input type="hidden" name="super_token" value="<?= $_SESSION['super_token'] ?>">
                                             </form>
                                         </div>
 
@@ -174,6 +175,7 @@ if (!$user->isLogin()) {
     <script src="assets/libs/feather-icons/feather.min.js"></script>
     <script src="assets/js/pages/plugins/lord-icon-2.1.0.js"></script>
     <script src="assets/js/plugins.js"></script>
+    <script src="assets/js/config/login.js"></script>
 
     <!-- password-addon init -->
     <script src="assets/js/pages/password-addon.init.js"></script>

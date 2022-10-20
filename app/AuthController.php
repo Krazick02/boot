@@ -9,7 +9,7 @@ if (isset($_POST["action"]) && isset($_POST["email"])) {
         switch ($_POST["action"]) {
             case 'access':
                 $authcontroller = new AuthController();
-                $authcontroller->login($_POST["email"], $_POST["pwd"]);
+                $authcontroller->login($_POST["email"], $_POST["password"]);
                 break;
             case 'create':
                 $name = strip_tags($_POST['name']);
@@ -19,7 +19,7 @@ if (isset($_POST["action"]) && isset($_POST["email"])) {
                 $create_by = strip_tags($_POST['create_by']);
                 $role = strip_tags($_POST['role']);
                 $password = strip_tags($_POST['password']);
-                $profile_photo = new CURLFILE($_FILES['imagen']['tmp_name']);
+                $profile_photo = new CURLFILE($_FILES['profile_photo_file']['tmp_name']);
                 $authcontroller = new AuthController();
                 $authcontroller->register($name, $lastname, $email, $phone_number, $create_by, $role, $password, $profile_photo);
                 break;
@@ -69,7 +69,7 @@ class AuthController
             $_SESSION['token'] = $response->data->token;
             $_SESSION['email'] = $response->data->email;
 
-            header("Location:".BASE_PATH."public/view/productos.php");
+            header("Location:".BASE_PATH."public/productos.php");
         } else {
             header("Location:".BASE_PATH."?error=true");
         }
@@ -106,7 +106,7 @@ class AuthController
         if (isset($response->code) &&  $response->code > 0) {
             $this->login($email, $password);
         } else {
-            header("Location:".BASE_PATH."?error=true");
+            header("Location:".BASE_PATH."index.php?error=true");
         }
     }
     public function recovery($email)
@@ -129,9 +129,9 @@ class AuthController
         curl_close($curl);
         $response = json_decode($response);
         if (isset($response->code) &&  $response->code > 0) {
-            header("Location:".BASE_PATH."index.php");
+            header("Location:".BASE_PATH."index.php?success=true");
         } else {
-            header("Location:".BASE_PATH."?error=true");
+            header("Location:".BASE_PATH."index.php?error=true");
         }
     }
 
@@ -162,9 +162,9 @@ class AuthController
         if (isset($response->code) &&  $response->code > 0) {
             $_SESSION = array();
             session_destroy();
-            header("Location:".BASE_PATH."index.php");
+            header("Location:".BASE_PATH."index.php?success=true");
         } else {
-            var_dump($_SESSION['token']);
+            header("Location:".BASE_PATH."index.php?error=true");
         }
     }
 }
