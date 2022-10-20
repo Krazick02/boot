@@ -2,6 +2,7 @@ Options +FollowSymLinks -MultiViews
 RewriteEngine on
 #Rutas
 RewriteRule ^auth$ app/AuthController.php
+RewriteRule ^user$ app/UserController.php
 RewriteRule ^prod$ app/ProductController.php
 RewriteRule ^public/inicio$ public/index.php
 RewriteRule ^public/passreset$ public/passreset.php
