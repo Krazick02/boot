@@ -1,10 +1,15 @@
 Options +FollowSymLinks -MultiViews
-
 RewriteEngine on
-#rules
-RewriteRule ^([^\.]+)$ $1.php [NC,L]
-RewriteRule ^([^\.]+)$ $1.html [NC,L]
-
-RewriteRule auth http://localhost/boot/app/AuthController.php
-RewriteRule ress http://localhost/boot/app/AuthController.php
-ErrorDocument 404 http://localhost/boot/public/view/notFound.php    
+#Rutas
+RewriteRule ^auth$ app/AuthController.php
+RewriteRule ^prod$ app/ProductController.php
+RewriteRule ^public/inicio$ public/index.php
+RewriteRule ^public/passreset$ public/passreset.php
+RewriteRule ^public/cerrarsesion$ public/logout.php
+RewriteRule ^public/contraseñacambiada$ public/passchange.php
+RewriteRule ^public/correoconfirmado$ public/passreset.php
+RewriteRule ^public/cuentacreada$ public/signup.php
+RewriteRule ^public/signup$ public/successmgs.php
+RewriteRule ^login$ index.php
+RewriteRule ^products/allProducts$ products/index.php
+RewriteRule ^product/([a-zA-Z0-9-]*)$ products/details.php?slug=$1

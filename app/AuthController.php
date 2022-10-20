@@ -129,7 +129,7 @@ class AuthController
         curl_close($curl);
         $response = json_decode($response);
         if (isset($response->code) &&  $response->code > 0) {
-            header("Location:".BASE_PATH."index");
+            header("Location:".BASE_PATH."index.php");
         } else {
             header("Location:".BASE_PATH."?error=true");
         }
@@ -162,7 +162,7 @@ class AuthController
         if (isset($response->code) &&  $response->code > 0) {
             $_SESSION = array();
             session_destroy();
-            header("Location:".BASE_PATH."index");
+            header("Location:".BASE_PATH."index.php");
         } else {
             var_dump($_SESSION['token']);
         }
