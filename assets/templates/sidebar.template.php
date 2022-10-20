@@ -37,7 +37,7 @@
                         <li class="menu-title"><span data-key="t-menu">Menu</span></li>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarDashboards" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarDashboards">
-                                <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Productos</span>
+                                <i class="fa-sharp fa-solid fa-circle-plus"></i> <span data-key="t-dashboards">Productos</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarDashboards">
                                 <ul class="nav nav-sm flex-column">
@@ -52,7 +52,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="#sidebarnft" class="nav-link" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarnft" data-key="t-nft-marketplace">
-                                <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboards">Cupones</span>
+                                <i class="fa-solid fa-ticket-simple"></i> <span data-key="t-dashboards">Cupones</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarnft">
                                 <ul class="nav nav-sm flex-column">
@@ -67,73 +67,45 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarCharts" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarCharts">
-                                <i class="mdi mdi-chart-donut"></i> <span data-key="t-charts">Categorias</span>
+                                <i class="fa-sharp fa-solid fa-hand-holding-heart"></i> <span data-key="t-charts">Categorias</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarCharts">
                                 <ul class="nav nav-sm flex-column">
                                     <!-- inicio categoria -->
+                                    <?php foreach($categories as $categ): ?>
                                     <li class="nav-item">
-                                        <a href="charts-apex-line.html" class="nav-link" data-key="t-line"> Nombre Categoria </a>
+                                        <a class="nav-link" data-key="t-line" href="pCategoria.php?categoria=<?php echo $categ->id ?>">
+                                            <?php echo $categ->name; ?>
+                                        </a>
                                     </li>
+                                    <?php endforeach; ?>
                                     <!-- fin categoria -->
-                                    <li class="nav-item">
-                                        <a href="charts-apex-line.html" class="nav-link" data-key="t-line"> Nombre Categoria </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="charts-apex-line.html" class="nav-link" data-key="t-line"> Nombre Categoria </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="charts-apex-line.html" class="nav-link" data-key="t-line"> Nombre Categoria </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="charts-apex-line.html" class="nav-link" data-key="t-line"> Nombre Categoria </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="charts-apex-line.html" class="nav-link" data-key="t-line"> Nombre Categoria </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="charts-apex-line.html" class="nav-link" data-key="t-line"> Nombre Categoria </a>
-                                    </li>
                                 </ul>
                             </div>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarIcons" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarIcons">
-                                <i class="mdi mdi-android-studio"></i> <span data-key="t-icons">Marcas</span>
+                                <i class="fa-sharp fa-solid fa-mug-hot"></i> <span data-key="t-icons">Marcas</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarIcons">
                                 <ul class="nav nav-sm flex-column">
                                     <!-- inicio marca -->
+                                    <?php foreach($marcas as $marca): ?>
                                     <li class="nav-item">
-                                        <a href="charts-apex-line.html" class="nav-link" data-key="t-line"> Nombre marca </a>
+                                        <a class="nav-link" data-key="t-line" href="pBrand.php?brand=<?php echo $marca->id ?>">
+                                            <?php echo $marca->name; ?>
+                                        </a>
                                     </li>
+                                    <?php endforeach; ?>
                                     <!-- fin marca -->
-                                    <li class="nav-item">
-                                        <a href="charts-apex-line.html" class="nav-link" data-key="t-line"> Nombre marca </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="charts-apex-line.html" class="nav-link" data-key="t-line"> Nombre marca </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="charts-apex-line.html" class="nav-link" data-key="t-line"> Nombre marca </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="charts-apex-line.html" class="nav-link" data-key="t-line"> Nombre marca </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="charts-apex-line.html" class="nav-link" data-key="t-line"> Nombre marca </a>
-                                    </li>
-                                    <li class="nav-item">
-                                        <a href="charts-apex-line.html" class="nav-link" data-key="t-line"> Nombre marca </a>
-                                    </li>
                                 </ul>
                             </div>
                         </li>
 
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarMaps" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMaps">
-                                <i class="mdi mdi-map-marker-outline"></i> <span data-key="t-maps">Usuario</span>
+                                <i class="fa-sharp fa-solid fa-face-smile"></i> <span data-key="t-maps">Usuario</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarMaps">
                                 <ul class="nav nav-sm flex-column">
@@ -150,7 +122,7 @@
 
                         <li class="nav-item">
                             <a class="nav-link menu-link" href="#sidebarMultilevel" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarMultilevel">
-                                <i class="mdi mdi-share-variant-outline"></i> <span data-key="t-multi-level">Clientes</span>
+                                <i class="fa-sharp fa-solid fa-user-plus"></i> <span data-key="t-multi-level">Clientes</span>
                             </a>
                             <div class="collapse menu-dropdown" id="sidebarMultilevel">
                                 <ul class="nav nav-sm flex-column">

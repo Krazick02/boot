@@ -68,6 +68,7 @@ class AuthController
             $_SESSION['avatar'] = $response->data->avatar;
             $_SESSION['token'] = $response->data->token;
             $_SESSION['email'] = $response->data->email;
+            $_SESSION['role'] = $response->data->role;
 
             header("Location:".BASE_PATH."public/productos.php");
         } else {
