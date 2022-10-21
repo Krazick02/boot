@@ -5,7 +5,7 @@
             <!-- LOGO -->
             <div class="navbar-brand-box">
                 <!-- Dark Logo-->
-                <a href="index.html" class="logo logo-dark">
+                <a href="productos.php" class="logo logo-dark">
                     <span class="logo-sm">
                         <img src="../assets/images/logo-sm.png" alt="" height="22">
                     </span>
@@ -14,7 +14,7 @@
                     </span>
                 </a>
                 <!-- Light Logo-->
-                <a href="index.html" class="logo logo-light">
+                <a href="productos.php" class="logo logo-light">
                     <span class="logo-sm">
                         <img src="../assets/images/logo-sm.png" alt="" height="22">
                     </span>
@@ -42,11 +42,27 @@
                             <div class="collapse menu-dropdown" id="sidebarDashboards">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="dashboard-analytics.html" class="nav-link" data-key="t-analytics"> Agregar producto </a>
+                                        <a href="productos.php" class="nav-link" data-key="t-analytics"> Agregar producto </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="dashboard-analytics.html" class="nav-link" data-key="t-analytics"> Ver lista de productos </a>
+                                        <a href="productos.php" class="nav-link" data-key="t-analytics"> Ver lista de productos </a>
                                     </li>
+                                </ul>
+                            </div>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link menu-link" href="#sidebarTables" data-bs-toggle="collapse" role="button" aria-expanded="false" aria-controls="sidebarTables">
+                                <i class="mdi mdi-grid-large"></i> <span data-key="t-tables">Etiquetas</span>
+                            </a>
+                            <div class="collapse menu-dropdown" id="sidebarTables">
+                                <ul class="nav nav-sm flex-column">
+                                    <?php foreach($tags as $t): ?>
+                                    <li class="nav-item">
+                                        <a class="nav-link" data-key="t-line" href="pTags.php?tagId=<?php echo $t->id ?>">
+                                            <?php echo $t->name; ?>
+                                        </a>
+                                    </li>
+                                    <?php endforeach; ?>
                                 </ul>
                             </div>
                         </li>
@@ -57,10 +73,10 @@
                             <div class="collapse menu-dropdown" id="sidebarnft">
                                 <ul class="nav nav-sm flex-column">
                                     <li class="nav-item">
-                                        <a href="apps-nft-marketplace.html" class="nav-link" data-key="t-marketplace"> Agregar cupon </a>
+                                        <a href="cupones.php" class="nav-link" data-key="t-marketplace"> Agregar cupon </a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="apps-nft-explore.html" class="nav-link" data-key="t-explore-now"> Ver lista de cupones </a>
+                                        <a href="cupones.php" class="nav-link" data-key="t-explore-now"> Ver lista de cupones </a>
                                     </li>
                                 </ul>
                             </div>
