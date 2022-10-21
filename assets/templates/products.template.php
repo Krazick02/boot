@@ -3,12 +3,12 @@
   <td>
       <div class="d-flex align-items-center">
           <div class="avatar-sm bg-light rounded p-1 me-2">
-            <a href="details?slug=<?php echo $lista->slug ?>" style="width:100%;">
+            <a href="details.php?slug=<?php echo $lista->slug ?>" style="width:100%;">
               <img src="<?php echo $lista->cover ?>" alt="" class="img-fluid d-block" />
             </a>
           </div>
           <div>
-              <h5 class="fs-14 my-1"><a href="apps-ecommerce-product-details.html" class="text-reset"><?php echo $lista->name?></a></h5>
+              <h5 class="fs-14 my-1"><a href="details.php?slug=<?php echo $lista->slug ?>" class="text-reset"><?php echo $lista->name?></a></h5>
               <span class="text-muted">24 Apr 2021</span>
           </div>
       </div>
